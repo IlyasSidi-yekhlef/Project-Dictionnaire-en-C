@@ -1,18 +1,9 @@
 #include <stdio.h>
-#include "stdlib.h"
 #include "tree_nom.h"
 #include "tree_nom.c"
-#include "nom.c"
-#include "nom.h"
-
 
 int main() {
-
-    t_tree_nom simple_tree;
-    simple_tree = fill_tree_nom();
-
+    t_tree_nom nom = fill_tree_nom();
+    display_tree_nom(nom);
     return 0;
-
 }
-
-//char * filename
