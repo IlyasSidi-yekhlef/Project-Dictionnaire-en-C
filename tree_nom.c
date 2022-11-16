@@ -6,9 +6,8 @@
 
 p_tree_nom fill_tree_nom(){
     p_tree_nom simple_tree;
-    for(int k = 0;k<=25;k++){
+    for(int k = 0;k<=26;k++){
         simple_tree.root[k] = NULL;
-        printf("1");
     }
     int i;
     p_nom_node temp = NULL;
@@ -27,38 +26,74 @@ p_tree_nom fill_tree_nom(){
     {
         while(fscanf(dicofile,"%s\t%s\t%s", flechie, base, formes) != EOF) //EOF pour end of file et \t pour les tabulations
         {
-            i = base[0] - 97;
-            printf("%s\n",base);
-            printf("%d\n",i);
-            if( simple_tree.root[i] == NULL && base[0] != end){
-                temp = creat_node_nom(base[0]);
-            }
-            simple_tree.root[i] = temp;
-            printf("%c",temp->letter);
-            while (base[count] != end) {
-                printf("A\n");
+            if(formes[0] == 'N' && base[0]<='z'&& base[0] >= 'a' ){
+                i = base[0] - 97;
+                printf("base : %s\n",base);
+                printf("emplacement : %d\n",i);
+                if( simple_tree.root[i] == NULL && base[0] != end){
+                    simple_tree.root[i] = creat_node_nom(base[0]);
+                }
+                temp = simple_tree.root[i];
+                while (base[count] != end) {
 //                for (i = 1; i >= count; i++) {
 //                    temp = temp->sons[base[i] - 97];
 //                }
-                i = base[count] - 97;
+
+                    if(base[count] = '-'){
+                        i = 26;
+                    }
+                    else{
+                        i = base[count] - 97;
+                    }
 //                printf("%d",temp->sons[i]->letter);
 //                if(count != 1){
 //                    temp = temp->sons[i];
 //                }
 
-                if (temp->sons[i] == NULL && base[count] != end) {
-                    printf("Z\n");
-                    temp->sons[i] = creat_node_nom(base[count]);
-                }
-                temp = temp->sons[i];
-                count++;
-                printf("%d",count);
+                    if (temp->sons[i] == NULL && base[count] != end) {
+                        printf("/OK/");
+                        temp->sons[i] = creat_node_nom(base[count]);
+                    }
+                    temp = temp->sons[i];
+                    count++;
+                    printf("/%d\n",count);
 //                display_tree_nom(simple_tree);
-            }
-            printf("fin");
-            i = base[0] - 97;
+                }
+                printf("fin\n");
+                i = base[0] - 97;
 
-            count = 1;
+                count = 1;
+            }
+//            i = base[0] - 97;
+//            printf("base : %s\n",base);
+//            printf("emplacement : %d\n",i);
+//            if( simple_tree.root[i] == NULL && base[0] != end){
+//                simple_tree.root[i] = creat_node_nom(base[0]);
+//            }
+//            temp = simple_tree.root[i];
+//            while (base[count] != end) {
+////                for (i = 1; i >= count; i++) {
+////                    temp = temp->sons[base[i] - 97];
+////                }
+//                i = base[count] - 97;
+////                printf("%d",temp->sons[i]->letter);
+////                if(count != 1){
+////                    temp = temp->sons[i];
+////                }
+//
+//                if (temp->sons[i] == NULL && base[count] != end) {
+//                    printf("/OK/");
+//                    temp->sons[i] = creat_node_nom(base[count]);
+//                }
+//                temp = temp->sons[i];
+//                count++;
+//                printf("/%d\n",count);
+////                display_tree_nom(simple_tree);
+//            }
+//            printf("fin\n");
+//            i = base[0] - 97;
+//
+//            count = 1;
 
 
         }
@@ -95,23 +130,7 @@ p_tree_nom fill_tree_nom(){
 
 
 void display_tree_nom(t_tree_nom simple_tree){
-    for(int i = 0; i<=25;i++){
-        if(simple_tree.root[i] != NULL){
-            display_nom_node(simple_tree.root[i]);
-        }
-    }
-}
-
-        count++;
-        l = base[count];
-        }
-
-
-    }
-
-
-void display_tree_nom(t_tree_nom simple_tree){
-    for(int i = 0; i<=25;i++){
+    for(int i = 0; i<=26;i++){
         if(simple_tree.root[i] != NULL){
             display_nom_node(simple_tree.root[i]);
         }
