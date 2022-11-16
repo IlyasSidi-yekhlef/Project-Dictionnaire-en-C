@@ -6,7 +6,12 @@
 
 p_nom_node creat_node_nom(char l){
     p_nom_node new;
+    new = (p_nom_node)malloc(sizeof(t_nom_node));
     new->letter = l;
+    for(int k = 0;k<=25;k++){
+        new->sons[k] = NULL;
+    }
+    printf("%c",l);
     return new;
 }
 
