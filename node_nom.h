@@ -11,8 +11,8 @@
 
 typedef struct s_nom_node
 {
-    char letter;
-    struct s_nom_node * sons [25];
+    char letter ;
+    struct s_nom_node * sons [27];
     int form;
 
     char flechie[35];
