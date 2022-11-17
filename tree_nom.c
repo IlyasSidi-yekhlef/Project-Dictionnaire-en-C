@@ -39,7 +39,7 @@ p_tree_nom fill_tree_nom(){
 //                    temp = temp->sons[base[i] - 97];
 //                }
 
-                    if(base[count] = '-'){
+                    if(base[count] == '-'){
                         i = 26;
                     }
                     else{
