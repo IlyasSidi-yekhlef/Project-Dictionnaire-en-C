@@ -13,8 +13,8 @@ typedef struct s_nom_node
 {
     char letter ;
     struct s_nom_node * sons [27];
-    int form;
-
+    int nb;
+    char base[35];
     char flechie[35];
 
 }t_nom_node,  *p_nom_node;
@@ -24,3 +24,4 @@ void display_nom_node(p_nom_node node);
 
 
 #endif //PROJET_DICOREEL_NODE_NOM_H
+
