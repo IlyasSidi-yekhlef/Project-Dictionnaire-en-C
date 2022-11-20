@@ -5,27 +5,25 @@
 #include "sentence.h"
 
 void search_word_unknow_type(char tab[],p_tree_adj adj,p_tree_adv adv,p_tree_nom nom,p_tree_ver ver){
-    int existe = 1 , i = 0, stop = 0, count =0;
-    char end = '\0';
-    printf("%s",tab);
+    int existe = 1 , i = 0;     // si existe = 1 alors le mot existe sinon il n'existe pas, i permet de parcourir le mot
+    char end = '\0';      // permet de verifier la fin d'un mot
     p_nom_node temp_nom = nom.root[tab[i] -97];
-    p_adj_node temp_adj = adj.root[tab[i] -97];
+    p_adj_node temp_adj = adj.root[tab[i] -97];    // on initialise des noeud temporaire pour parcourir l'arbre
     p_adv_node temp_adv = adv.root[tab[i] -97];
     p_ver_node temp_ver = ver.root[tab[i] -97];
 
-    while(tab[i] !=  end && existe == 1 ){
-        if (temp_nom->letter == tab[i]){
-            existe = 1;
-            temp_nom = temp_nom->sons[tab[i+1] -97];
-            i++;
+    while(tab[i] !=  end && existe == 1 ){    // tant que le mot n'est pas fini et que les lettres deja parcouru existe on continu
+        if (temp_nom->letter == tab[i]){           // si la lettre est bien dans le noeud
+            existe = 1;                    // on laisse dit que sa lettre existe
+            temp_nom = temp_nom->sons[tab[i+1] -97];   // on passe au noeud suivant
+            i++;             // et a la lettre suivante
         }
         else{
             existe = 0;
         }
-    }
-    printf("%d",existe);
+    }                                      // sinon le mot n'existe pas dans l'arbre et on passe au type suivant
     if( existe == 0){
-        existe = 1;
+        existe = 1;               // on renetialise les variables pour chaque type
         i = 0;
         while(tab[i] !=  end && existe == 1 ){
             if (temp_adj->letter == tab[i]){
@@ -37,7 +35,6 @@ void search_word_unknow_type(char tab[],p_tree_adj adj,p_tree_adv adv,p_tree_nom
                 existe = 0;
             }
         }
-        printf("%d",existe);
         if( existe == 0){
             existe = 1;
             i = 0;
@@ -51,7 +48,6 @@ void search_word_unknow_type(char tab[],p_tree_adj adj,p_tree_adv adv,p_tree_nom
                     existe = 0;
                 }
             }
-            printf("%d",existe);
             if( existe == 0){
                 existe = 1;
                 i = 0;
@@ -65,7 +61,6 @@ void search_word_unknow_type(char tab[],p_tree_adj adj,p_tree_adv adv,p_tree_nom
                         existe = 0;
                     }
                 }
-                printf("%d",existe);
             }
         }
     }
